@@ -1,0 +1,41 @@
+{
+  "name": "osls-console",
+  "version": "0.1.0",
+  "description": "Local-first, read-only dashboard for Serverless Framework and osls services. Reads CloudWatch directly with your own AWS credentials; zero deployment.",
+  "type": "module",
+  "main": "src/plugin.cjs",
+  "bin": {
+    "osls-console": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "build:css": "tailwindcss -i ./src/ui/app.css -o ./src/ui/styles.css --minify",
+    "smoke": "node scripts/smoke.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "serverless",
+    "serverless-framework",
+    "console",
+    "dashboard",
+    "lambda",
+    "local",
+    "developer-tools"
+  ],
+  "dependencies": {
+    "@aws-sdk/client-cloudformation": "^3.0.0",
+    "@aws-sdk/client-cloudwatch": "^3.0.0",
+    "@aws-sdk/client-cloudwatch-logs": "^3.0.0",
+    "express": "^4.19.0",
+    "yaml": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "daisyui": "^5.7.50",
+    "tailwindcss": "^4.3.3"
+  }
+}

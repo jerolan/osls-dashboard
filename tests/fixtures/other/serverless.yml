@@ -1,0 +1,8 @@
+service: tencent-demo
+provider:
+  name: tencent
+  runtime: nodejs16
+functions:
+  fn:
+    handler: handler.fn
+

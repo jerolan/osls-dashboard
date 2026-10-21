@@ -1,0 +1,14 @@
+service: demo-service
+provider:
+  name: aws
+  stage: dev
+  region: us-east-1
+  runtime: nodejs20.x
+functions:
+  auth:
+    events:
+      - httpApi: 'POST /auth/register'
+  billing:
+    events:
+      - httpApi: 'POST /billing/charge'
+

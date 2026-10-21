@@ -1,0 +1,17 @@
+service: osls-console-demo
+
+plugins:
+  - osls-console
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi: 'GET /hello'
+

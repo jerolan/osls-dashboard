@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>osls-console</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="min-h-screen">
+  <div class="drawer lg:drawer-open">
+    <input id="nav-drawer" type="checkbox" class="drawer-toggle">
+    <div class="drawer-content flex min-h-screen flex-col">
+      <header class="navbar sticky top-0 z-20 min-h-14 border-b border-base-300 bg-base-100/95 px-4 backdrop-blur lg:px-8">
+        <div class="flex-none lg:hidden">
+          <label for="nav-drawer" class="btn btn-ghost btn-square btn-sm" aria-label="Open navigation">
+            <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </label>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="breadcrumbs hidden text-sm sm:block">
+            <ul>
+              <li id="crumb-service" class="text-base-content/50">osls-console</li>
+              <li id="crumb-page" class="font-medium">Overview</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex flex-none items-center gap-2">
+          <span id="window-badge" class="badge badge-ghost badge-sm">12h</span>
+          <button id="refresh" class="btn btn-ghost btn-sm" type="button" title="Refresh live data">
+            <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v6h6M20 20v-6h-6"/><path stroke-linecap="round" d="M5.5 15a7 7 0 0 0 12 2M18.5 9a7 7 0 0 0-12-2"/></svg>
+            Refresh
+          </button>
+        </div>
+      </header>
+
+      <main class="mx-auto w-full max-w-7xl flex-1 p-4 lg:p-8">
+        <div id="error" class="alert alert-error mb-6 hidden" role="alert"></div>
+        <section id="page" aria-live="polite"></section>
+      </main>
+
+      <footer class="mx-auto flex w-full max-w-7xl flex-wrap items-center gap-x-3 gap-y-1 border-t border-base-300 px-4 py-4 text-xs text-base-content/40 lg:px-8">
+        <span>read-only</span><span aria-hidden="true">·</span>
+        <span>localhost</span><span aria-hidden="true">·</span>
+        <span>your AWS credentials</span><span aria-hidden="true">·</span>
+        <span>no telemetry</span>
+      </footer>
+    </div>
+
+    <div class="drawer-side z-30">
+      <label for="nav-drawer" aria-label="Close navigation" class="drawer-overlay"></label>
+      <aside class="flex min-h-full w-64 flex-col border-r border-base-300 bg-base-100">
+        <a href="#/" class="flex items-center gap-3 border-b border-base-300 p-4">
+          <span class="grid size-9 place-items-center rounded-box bg-primary font-bold text-primary-content">◆</span>
+          <span class="min-w-0">
+            <span class="block truncate font-semibold leading-tight">osls-console</span>
+            <span class="block text-[11px] text-base-content/50">local AWS dashboard</span>
+          </span>
+        </a>
+
+        <nav id="nav" class="menu flex-1 gap-1 p-3">
+          <li><a href="#/" data-route="/">
+            <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>
+            Overview</a></li>
+          <li><a href="#/functions" data-route="/functions">
+            <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m8 7-5 5 5 5m8-10 5 5-5 5"/></svg>
+            Functions</a></li>
+          <li><a href="#/explorer" data-route="/explorer">
+            <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/></svg>
+            Explorer</a></li>
+          <li><a href="#/live" data-route="/live">
+            <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-6 3 12 2-6h7"/></svg>
+            Live tail</a></li>
+        </nav>
+
+        <div class="border-t border-base-300 p-4 text-xs">
+          <div id="meta" class="truncate text-base-content/60">loading…</div>
+          <div class="mt-2 flex flex-wrap gap-1">
+            <span class="badge badge-outline badge-xs">read-only</span>
+            <span class="badge badge-outline badge-xs">localhost</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <noscript><div class="alert alert-warning m-4">osls-console needs JavaScript to render the dashboard.</div></noscript>
+  <script src="/main.js"></script>
+</body>
+</html>
